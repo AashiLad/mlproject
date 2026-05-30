@@ -3,8 +3,17 @@
 
 An End-to-End Machine Learning project that predicts whether a telecom customer is likely to churn.
 
-## Features
+## Live Demo
 
+https://customer-churn-prediction-50m3.onrender.com
+
+## Features
+- Deployed on Render
+- Customer Churn Prediction
+- XGBoost Classifier
+- Churn Probability Score
+- End-to-End ML Pipeline
+- Flask Web Application
 - Data Ingestion Pipeline
 - Data Transformation Pipeline
 - Hyperparameter Tuning
@@ -12,10 +21,8 @@ An End-to-End Machine Learning project that predicts whether a telecom customer 
 - Decision Tree
 - Random Forest
 - XGBoost
-- Model Persistence
 - Prediction Pipeline
-- Flask Web Application
-- Customer Churn Probability Score
+
 
 ---
 
