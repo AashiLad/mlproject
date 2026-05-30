@@ -11,7 +11,6 @@ class PredictPipeline:
         pass
 
     def predict(self, features):
-
         try:
 
             model_path = "artifacts/model.pkl"
@@ -22,9 +21,11 @@ class PredictPipeline:
 
             data_scaled = preprocessor.transform(features)
 
-            preds = model.predict(data_scaled)
+            prediction = model.predict(data_scaled)
 
-            return preds
+            probability = model.predict_proba(data_scaled)
+
+            return prediction, probability
 
         except Exception as e:
             raise CustomException(e, sys)

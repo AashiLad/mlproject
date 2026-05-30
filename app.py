@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template
 
+from src.pipeline import predict_pipeline
 from src.pipeline.predict_pipeline import (
     PredictPipeline,
     CustomData
@@ -78,17 +79,36 @@ def predict_datapoint():
 
         predict_pipeline = PredictPipeline()
 
-        result = predict_pipeline.predict(pred_df)
+        prediction, probability = predict_pipeline.predict(pred_df)
+        churn_probability = round(probability[0][1] * 100,2)
 
-        prediction = (
-            "Customer Will Churn"
-            if result[0] == 1
-            else "Customer Will Not Churn"
-        )
+        if prediction[0] == 1:
+
+            prediction_text = (
+                f"Customer Will Churn "
+                f"({churn_probability}% probability)")
+
+        else:
+
+            prediction_text = (
+                f"Customer Will Not Churn "
+                f"({100-churn_probability}% confidence)"
+            )
+        
 
         return render_template(
+
             "home.html",
-            results=prediction
+
+            results=prediction_text,
+
+            probability=churn_probability,
+
+            tenure=request.form.get("tenure"),
+
+            monthly=request.form.get("MonthlyCharges"),
+
+            total=request.form.get("TotalCharges")
         )
 
 

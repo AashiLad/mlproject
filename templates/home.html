@@ -114,6 +114,51 @@
                 grid-column:span 1;
             }
         }
+        .result-box{
+            margin-top:30px;
+        }
+
+        .summary-card{
+            margin-top:20px;
+            background:#0f172a;
+            padding:20px;
+            border-radius:12px;
+        }
+
+        .summary-card h3{
+            margin-bottom:10px;
+            color:#38bdf8;
+        }
+
+        .summary-card p{
+            margin:8px 0;
+        }
+
+        .risk-box{
+            margin-top:25px;
+        }
+
+        .risk-box h3{
+            margin-bottom:10px;
+            color:#38bdf8;
+        }
+
+        .progress{
+            width:100%;
+            background:#334155;
+            height:30px;
+            border-radius:20px;
+            overflow:hidden;
+        }
+
+        .progress-bar{
+            height:100%;
+            background:#ef4444;
+            text-align:center;
+            line-height:30px;
+            font-weight:bold;
+            color:white;
+        }
 
     </style>
 
@@ -239,6 +284,42 @@
     <div class="result">
         {{ results }}
     </div>
+
+    <div class="result-box">
+    
+        <h2>{{ results }}</h2>
+    
+        <div class="summary-card">
+    
+            <h3>Customer Summary</h3>
+    
+            <p><strong>Tenure:</strong> {{ tenure }} months</p>
+    
+            <p><strong>Monthly Charges:</strong> ₹{{ monthly }}</p>
+    
+            <p><strong>Total Charges:</strong> ₹{{ total }}</p>
+    
+        </div>
+    
+        <div class="risk-box">
+    
+            <h3>Churn Risk Score</h3>
+    
+            <div class="progress">
+    
+                <div class="progress-bar" style="width: {{ probability }}%;">
+    
+                    {{ probability }}%
+    
+                </div>
+    
+            </div>
+    
+        </div>
+    
+    </div>
+
+
     {% endif %}
 
 </div>
